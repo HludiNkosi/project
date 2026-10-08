@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #f7fbff;
+  background: #06152e;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: radial-gradient(circle at 50% 0%, #173b76 0%, #06152e 58%, #020b1b 100%);
+}
+
+.poster {
+  position: relative;
+  width: min(100%, 980px);
+  min-height: 720px;
+  overflow: hidden;
+  padding: 38px 54px 30px;
+  isolation: isolate;
+  background: linear-gradient(135deg, #0b2d67 0%, #09225a 46%, #07183e 100%);
+  border: 1px solid rgba(149, 197, 255, .25);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .42), inset 0 1px rgba(255,255,255,.1);
+}
+
+.poster::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(116deg, transparent 20%, rgba(66, 156, 255, .13) 20.2%, transparent 34%, transparent 73%, rgba(14, 83, 188, .23) 73.2%, transparent 88%); }
+.poster::after { content: ''; position: absolute; z-index: -1; width: 480px; height: 480px; right: -190px; top: -155px; border: 1px solid rgba(116, 193, 255, .17); transform: rotate(45deg); box-shadow: 0 0 0 34px rgba(116,193,255,.035), 0 0 0 70px rgba(116,193,255,.025); }
+.grid-overlay { position: absolute; z-index: -1; inset: 0; opacity: .09; background-image: linear-gradient(rgba(255,255,255,.32) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(to bottom, black, transparent 70%); }
+.poster-glow { position: absolute; z-index: -1; border-radius: 50%; filter: blur(4px); pointer-events: none; }
+.poster-glow-one { width: 250px; height: 250px; background: rgba(21, 130, 255, .2); left: -155px; top: 240px; }
+.poster-glow-two { width: 200px; height: 200px; background: rgba(7, 104, 231, .14); right: 30px; bottom: -100px; }
+
+.poster-header, .poster-footer, .details-grid, .experience-row { display: flex; align-items: center; }
+.poster-header { justify-content: space-between; padding-bottom: 29px; border-bottom: 1px solid rgba(255,255,255,.14); }
+.brand-lockup { display: flex; align-items: center; gap: 13px; }
+.logo-frame { width: 84px; height: 47px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: transparent; }
+.logo-frame img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.brand-caption, .edition-pill, .detail-label, .footer-label, .eyebrow, .day-label { font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .13em; }
+.brand-caption { color: #8ab8fa; font-size: 10px; }
+.edition-pill { display: flex; align-items: center; gap: 9px; color: #d6e9ff; font-size: 10px; }
+.edition-dot { display: block; width: 7px; height: 7px; background: #4de0ff; border-radius: 50%; box-shadow: 0 0 14px #4de0ff; }
+
+.hero-copy { padding: 34px 0 26px; }
+.eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 13px; color: #64dafa; font-size: 10px; }
+.eyebrow span { width: 26px; height: 2px; background: #64dafa; }
+h1 { margin: 0; font-family: 'Barlow Condensed', sans-serif; font-size: clamp(90px, 14vw, 160px); line-height: .78; font-weight: 900; letter-spacing: -.045em; text-transform: uppercase; }
+h1 span { display: block; color: #f8fbff; }
+h1 strong { display: block; color: #53c9fb; font-weight: 900; letter-spacing: -.06em; text-shadow: 0 5px 0 #1669bd; }
+.hero-rule { display: flex; align-items: center; gap: 13px; margin-top: 21px; color: #dcecff; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .18em; }
+.hero-rule i { width: 54px; height: 1px; background: #50d6ff; }
+.hero-description { margin: 15px 0 0; color: #a9c9eb; font-size: 14px; line-height: 1.55; }
+
+.event-date-card { position: absolute; top: 205px; right: 54px; display: flex; align-items: center; gap: 13px; padding: 14px 17px; background: rgba(3, 19, 52, .58); border-left: 3px solid #5ad6ff; backdrop-filter: blur(10px); }
+.date-number { color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 65px; font-weight: 800; line-height: .75; }
+.date-meta { display: flex; flex-direction: column; gap: 4px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; }
+.date-meta span { color: #60d9fb; font-size: 16px; font-weight: 700; letter-spacing: .08em; }
+.date-meta strong { color: #c5dbf8; font-size: 14px; letter-spacing: .18em; }
+.date-divider { height: 42px; width: 1px; background: rgba(255,255,255,.23); }
+.day-label { color: #9eb9db; font-size: 10px; line-height: 1.8; }
+.day-label span { display: block; color: #5bd6fe; text-align: center; }
+
+.details-grid { gap: 12px; margin-bottom: 15px; }
+.detail-card { flex: 1; min-height: 77px; display: flex; align-items: center; gap: 13px; padding: 15px 16px; background: rgba(5, 24, 64, .74); border: 1px solid rgba(127, 187, 246, .2); transition: transform .2s ease, border-color .2s ease; }
+.detail-card:hover { transform: translateY(-3px); border-color: rgba(104, 216, 255, .7); }
+.icon-wrap { display: grid; flex: 0 0 38px; place-items: center; width: 38px; height: 38px; color: #5ed8ff; border: 1px solid rgba(92, 213, 255, .38); border-radius: 50%; }
+.detail-card > div:last-child { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.detail-label { color: #76a7dd; font-size: 9px; }
+.detail-card strong { overflow: hidden; color: #f1f7ff; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .04em; text-overflow: ellipsis; white-space: nowrap; }
+.detail-card small { color: #82a8d4; font-size: 11px; }
+
+.experience-row { gap: 12px; margin-bottom: 22px; }
+.experience-card { flex: 1; display: flex; align-items: center; gap: 12px; padding: 13px 15px; }
+.bar-card { background: linear-gradient(100deg, #177cc7, #1558a5); }
+.stall-card { background: rgba(11, 44, 98, .7); border: 1px solid rgba(91, 177, 244, .32); }
+.experience-icon { display: grid; flex: 0 0 38px; place-items: center; color: #fff; }
+.experience-card div:last-child { display: flex; flex-direction: column; gap: 3px; }
+.experience-card strong { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; letter-spacing: .06em; text-transform: uppercase; }
+.experience-card span { color: #d1e8ff; font-size: 11px; }
+
+.poster-footer { justify-content: space-between; gap: 20px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.15); }
+.contact-block { display: flex; flex-direction: column; gap: 9px; }
+.footer-label { display: flex; align-items: center; gap: 7px; color: #65d8fb; font-size: 9px; }
+.contacts { display: flex; flex-wrap: wrap; gap: 7px 16px; color: #b2cbed; font-family: 'DM Mono', monospace; font-size: 10px; }
+.contacts b { color: #f2f8ff; font-weight: 500; }
+.cta-mark { display: flex; align-items: center; gap: 4px; color: #63ddff; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: .12em; }
+
+@media (max-width: 760px) {
+  .page-shell { padding: 0; align-items: stretch; }
+  .poster { min-height: 100vh; padding: 26px 22px 24px; border: 0; }
+  .poster-header { padding-bottom: 22px; }
+  .hero-copy { padding-top: 31px; }
+  h1 { font-size: clamp(86px, 24vw, 138px); }
+  .event-date-card { position: static; width: fit-content; margin: 6px 0 28px auto; }
+  .details-grid, .experience-row { align-items: stretch; flex-direction: column; gap: 9px; }
+  .detail-card { min-height: 68px; }
+  .experience-card { min-height: 61px; }
+  .poster-footer { align-items: flex-start; flex-direction: column; gap: 15px; }
+  .cta-mark { display: none; }
+}
+
+@media (max-width: 430px) {
+  .poster { padding-inline: 17px; }
+  .logo-frame { width: 75px; height: 43px; }
+  .edition-pill { font-size: 9px; }
+  .hero-description { font-size: 13px; }
+  .date-number { font-size: 56px; }
+  .contacts { flex-direction: column; gap: 5px; }
+}
